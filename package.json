@@ -60,5 +60,7 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3"
+    "extract-text-webpack-plugin": "^0.8.2",
+    "webpack": "^1.12.12"
   }
 }
