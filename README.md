@@ -73,6 +73,14 @@ $ npm run build
 
 Build minified app for production using the [production](http://webpack.github.io/docs/cli.html#production-shortcut-p) shortcut.
 
+### run build
+
+```sh
+$ npm run build:start
+```
+
+Run production app in `build/app.js`
+
 ### test
 
 ```sh
