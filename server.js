@@ -13,7 +13,7 @@ var app = express();
 
 // Serve application file depending on environment
 app.get('/app.js', function(req, res) {
-  if (process.env.PRODUCTION) {
+  if (process.env.NODE_ENV === 'production') {
     res.sendFile(__dirname + '/build/app.js');
   } else {
     res.redirect('//localhost:9090/build/app.js');
@@ -22,7 +22,7 @@ app.get('/app.js', function(req, res) {
 
 // Serve aggregate stylesheet depending on environment
 app.get('/style.css', function(req, res) {
-  if (process.env.PRODUCTION) {
+  if (process.env.NODE_ENV === 'production') {
     res.sendFile(__dirname + '/build/style.css');
   } else {
     res.redirect('//localhost:9090/build/style.css');
@@ -43,11 +43,10 @@ app.get('*', function(req, res) {
  *
  *************************************************************/
 
-if (!process.env.PRODUCTION) {
+if (process.env.NODE_ENV !== 'production') {
   var webpack = require('webpack');
   var WebpackDevServer = require('webpack-dev-server');
   var config = require('./webpack.local.config');
-
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
